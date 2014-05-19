@@ -1,4 +1,4 @@
-package com.bedpotato.Algorithms;
+package com.bedpotato.Algorithms.C1;
 
 import java.util.Iterator;
 
