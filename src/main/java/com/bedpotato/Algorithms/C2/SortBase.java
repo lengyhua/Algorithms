@@ -1,7 +1,19 @@
 package com.bedpotato.Algorithms.C2;
 
+
 @SuppressWarnings("rawtypes")
 public abstract class SortBase {
+	public static void main(String[] args) {
+		String[] strs = new String[]{"X","T","V","A","E","I"};
+		SelectionSort selectionSort = new SelectionSort();
+		selectionSort.sort(strs);
+		selectionSort.show(strs);
+		strs = new String[]{"X","T","V","A","E","I"};
+		InsertionSort insertionSort = new InsertionSort();
+		insertionSort.sort(strs);
+		insertionSort.show(strs);
+	}
+
 	public abstract void sort(Comparable[] a);
 
 	@SuppressWarnings("unchecked")
