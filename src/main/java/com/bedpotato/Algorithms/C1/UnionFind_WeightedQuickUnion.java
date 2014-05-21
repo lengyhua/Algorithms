@@ -21,18 +21,18 @@ public class UnionFind_WeightedQuickUnion extends UnionFind {
 
 	@Override
 	public void union(int p, int q) {
-		int pID = find(p);
-		int qID = find(q);
-		if (pID == qID) {
+		int pRoot = find(p);
+		int qRoot = find(q);
+		if (pRoot == qRoot) {
 			return;
 		}
 		// 将小树的根节点连接到大树的根节点
-		if (sz[pID] < sz[qID]) {
-			id[pID] = qID;
-			sz[qID] += sz[pID];
+		if (sz[pRoot] < sz[qRoot]) {
+			id[pRoot] = qRoot;
+			sz[qRoot] += sz[pRoot];
 		} else {
-			id[qID] = pID;
-			sz[pID] += sz[qID];
+			id[qRoot] = pRoot;
+			sz[pRoot] += sz[qRoot];
 		}
 		count--;
 	}
