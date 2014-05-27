@@ -73,5 +73,10 @@ public class Queue<T> implements Iterable<T> {
 			current = current.next;
 			return item;
 		}
+
+		@Override
+		public void remove() {
+			
+		}
 	}
 }
