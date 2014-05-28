@@ -11,7 +11,7 @@ public class Evaluate {
 		System.out.println(evaluateMe(str));
 	}
 
-	public static final List<String> opList = new ArrayList<>();
+	public static final List<String> opList = new ArrayList<String>();
 	static {
 		opList.add("+");
 		opList.add("-");
@@ -21,8 +21,8 @@ public class Evaluate {
 	}
 
 	public static double evaluate(String str) {
-		Stack<String> ops = new Stack<>();
-		Stack<Double> vals = new Stack<>();
+		Stack<String> ops = new Stack<String>();
+		Stack<Double> vals = new Stack<Double>();
 		for (int i = 0; i < str.length(); i++) {
 			String s = String.valueOf(str.charAt(i));
 			if (s.equals("(")) {
@@ -46,7 +46,7 @@ public class Evaluate {
 	}
 
 	public static double evaluateMe(String str) {
-		Stack<String> vals = new Stack<>();
+		Stack<String> vals = new Stack<String>();
 		for (int i = 0; i < str.length(); i++) {
 			String s = String.valueOf(str.charAt(i));
 			if (s.equals("(")) {
