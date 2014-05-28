@@ -1,17 +1,48 @@
 package com.bedpotato.Algorithms.C2;
 
+import java.util.Arrays;
+
+import com.bedpotato.alg4.Stopwatch;
 
 @SuppressWarnings("rawtypes")
 public abstract class SortBase {
+	public static final String INSERTION_SORT = "insertionSort";
+	public static final String SELECTION_SORT = "selectionSort";
+	public static final String SHELL_SORT = "shellSort";
+	public static final String MERGE_SORT = "mergeSort";
+	public static final String QUICK_SORT = "quickSort";
+	public static final String HEAP_SORT = "heapSort";
+
+	// 排序算法
+	static String method = SHELL_SORT;
+	// 排序数组长度
+	static int length = 100;
+
 	public static void main(String[] args) {
-		String[] strs = new String[]{"X","T","V","A","E","I"};
-		SelectionSort selectionSort = new SelectionSort();
-		selectionSort.sort(strs);
-		selectionSort.show(strs);
-		strs = new String[]{"X","T","V","A","E","I"};
-		InsertionSort insertionSort = new InsertionSort();
-		insertionSort.sort(strs);
-		insertionSort.show(strs);
+		// 生成随机数
+		Double[] randomNumbers = new Double[length];
+		for (int i = 0; i < length; i++) {
+			randomNumbers[i] = Math.random();
+		}
+		sortTest(INSERTION_SORT, Arrays.copyOf(randomNumbers, length));
+//		sortTest(SELECTION_SORT, Arrays.copyOf(randomNumbers, length));
+//		sortTest(SHELL_SORT, Arrays.copyOf(randomNumbers, length));
+	}
+
+	public static void sortTest(String method, Double[] randomNumbers) {
+		Stopwatch timer = new Stopwatch();
+		SortBase sort = null;
+		if (method.equals(INSERTION_SORT)) {
+			// sort = new InsertionSort();
+			sort = new InsertionWith();
+		} else if (method.equals(SELECTION_SORT)) {
+			sort = new SelectionSort();
+		} else if (method.equals(SHELL_SORT)) {
+			sort = new ShellSort();
+		}
+		sort.sort(randomNumbers);
+		sort.show(randomNumbers);
+		System.out.println(timer.elapsedTime());
 	}
 
 	public abstract void sort(Comparable[] a);
