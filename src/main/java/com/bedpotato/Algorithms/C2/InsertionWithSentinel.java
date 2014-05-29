@@ -1,9 +1,11 @@
 package com.bedpotato.Algorithms.C2;
 
-public class InsertionWith extends SortBase {
+@SuppressWarnings("rawtypes")
+public class InsertionWithSentinel extends SortBase {
 
 	@Override
 	public void sort(Comparable[] a) {
+		// TODO 需要把数组第一个位置留空，否则第一个数就被覆盖了
 		int length = a.length;
 		for (int i = 2; i < length; i++) {
 			System.out.println("arr[0]==" + a[0]);

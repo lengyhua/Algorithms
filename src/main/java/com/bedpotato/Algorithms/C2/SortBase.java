@@ -1,6 +1,7 @@
 package com.bedpotato.Algorithms.C2;
 
 import java.util.Arrays;
+import java.util.Random;
 
 import com.bedpotato.alg4.Stopwatch;
 
@@ -16,25 +17,29 @@ public abstract class SortBase {
 	// 排序算法
 	static String method = SHELL_SORT;
 	// 排序数组长度
-	static int length = 100;
+	static int length = 10;
 
 	public static void main(String[] args) {
 		// 生成随机数
-		Double[] randomNumbers = new Double[length];
+		// Double[] randomNumbers = new Double[length];
+		// for (int i = 0; i < length; i++) {
+		// randomNumbers[i] = Math.random();
+		// }
+		Integer[] randomNumbers = new Integer[length];
 		for (int i = 0; i < length; i++) {
-			randomNumbers[i] = Math.random();
+			randomNumbers[i] = new Random().nextInt(100);
 		}
+
 		sortTest(INSERTION_SORT, Arrays.copyOf(randomNumbers, length));
-//		sortTest(SELECTION_SORT, Arrays.copyOf(randomNumbers, length));
-//		sortTest(SHELL_SORT, Arrays.copyOf(randomNumbers, length));
+		// sortTest(SELECTION_SORT, Arrays.copyOf(randomNumbers, length));
+		// sortTest(SHELL_SORT, Arrays.copyOf(randomNumbers, length));
 	}
 
-	public static void sortTest(String method, Double[] randomNumbers) {
+	public static void sortTest(String method, Comparable[] randomNumbers) {
 		Stopwatch timer = new Stopwatch();
 		SortBase sort = null;
 		if (method.equals(INSERTION_SORT)) {
-			// sort = new InsertionSort();
-			sort = new InsertionWith();
+			sort = new InsertionSort();
 		} else if (method.equals(SELECTION_SORT)) {
 			sort = new SelectionSort();
 		} else if (method.equals(SHELL_SORT)) {
