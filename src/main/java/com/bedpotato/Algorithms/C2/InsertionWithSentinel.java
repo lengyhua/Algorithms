@@ -19,4 +19,10 @@ public class InsertionWithSentinel extends SortBase {
 			}
 		}
 	}
+
+	@Override
+	public void practise(Comparable[] a) {
+		// TODO Auto-generated method stub
+		
+	}
 }

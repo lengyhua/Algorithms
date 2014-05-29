@@ -17,7 +17,7 @@ public abstract class SortBase {
 	// 排序算法
 	static String method = SHELL_SORT;
 	// 排序数组长度
-	static int length = 10;
+	static int length = 100;
 
 	public static void main(String[] args) {
 		// 生成随机数
@@ -29,13 +29,12 @@ public abstract class SortBase {
 		for (int i = 0; i < length; i++) {
 			randomNumbers[i] = new Random().nextInt(100);
 		}
-
-		sortTest(INSERTION_SORT, Arrays.copyOf(randomNumbers, length));
-		// sortTest(SELECTION_SORT, Arrays.copyOf(randomNumbers, length));
+		sortTest(INSERTION_SORT, randomNumbers);
+		sortTest(SELECTION_SORT, randomNumbers);
 		// sortTest(SHELL_SORT, Arrays.copyOf(randomNumbers, length));
 	}
 
-	public static void sortTest(String method, Comparable[] randomNumbers) {
+	public static void sortTest(String method, final Comparable[] randomNumbers) {
 		Stopwatch timer = new Stopwatch();
 		SortBase sort = null;
 		if (method.equals(INSERTION_SORT)) {
@@ -45,32 +44,40 @@ public abstract class SortBase {
 		} else if (method.equals(SHELL_SORT)) {
 			sort = new ShellSort();
 		}
-		sort.sort(randomNumbers);
-		sort.show(randomNumbers);
+		sort.sort(Arrays.copyOf(randomNumbers, length));
 		System.out.println(timer.elapsedTime());
+		// test practise
+		Comparable[] testData = Arrays.copyOf(randomNumbers, length);
+		sort.practise(testData);
+		System.out.println(method + " Test Method Result:" + isSorted(testData));
 	}
 
 	public abstract void sort(Comparable[] a);
 
+	public abstract void practise(Comparable[] a);
+
 	@SuppressWarnings("unchecked")
-	public boolean less(Comparable v, Comparable w) {
+	public static boolean less(Comparable v, Comparable w) {
 		return v.compareTo(w) < 0;
 	}
 
-	public void exch(Comparable[] a, int i, int j) {
+	public static void exch(Comparable[] a, int i, int j) {
 		Comparable p = a[i];
 		a[i] = a[j];
 		a[j] = p;
 	}
 
-	public void show(Comparable[] a) {
+	public static void show(Comparable[] a) {
 		for (int i = 0; i < a.length; i++) {
 			System.out.println(a[i].toString());
 		}
 	}
 
-	public boolean isSorted(Comparable[] a) {
-		for (int i = 0; i < a.length; i++) {
+	public static boolean isSorted(Comparable[] a) {
+		if (a == null) {
+			return false;
+		}
+		for (int i = 1; i < a.length; i++) {
 			if (less(a[i], a[i - 1])) {
 				return false;
 			}

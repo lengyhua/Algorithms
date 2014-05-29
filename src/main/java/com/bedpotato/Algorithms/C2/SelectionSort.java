@@ -15,4 +15,14 @@ public class SelectionSort extends SortBase {
 			exch(a, i, min);
 		}
 	}
+
+	@Override
+	public void practise(Comparable[] a) {
+		for(int i=0;i<a.length;i++){
+			int minNumberLocation = i;
+			for(int j=i;j<a.length;j++){
+				
+			}
+		}
+	}
 }

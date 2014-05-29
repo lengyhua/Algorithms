@@ -17,4 +17,9 @@ public class ShellSort extends SortBase {
 			h = h / 3;
 		}
 	}
+
+	@Override
+	public void practise(Comparable[] a) {
+		
+	}
 }
