@@ -17,7 +17,7 @@ public abstract class SortBase {
 	// 排序算法
 	static String method = SHELL_SORT;
 	// 排序数组长度
-	static int length = 100;
+	static int length = 7;
 
 	public static void main(String[] args) {
 		// 生成随机数
@@ -29,9 +29,9 @@ public abstract class SortBase {
 		for (int i = 0; i < length; i++) {
 			randomNumbers[i] = new Random().nextInt(100);
 		}
-		sortTest(INSERTION_SORT, randomNumbers);
-		sortTest(SELECTION_SORT, randomNumbers);
-		// sortTest(SHELL_SORT, Arrays.copyOf(randomNumbers, length));
+		// sortTest(INSERTION_SORT, randomNumbers);
+		// sortTest(SELECTION_SORT, randomNumbers);
+		sortTest(SHELL_SORT, randomNumbers);
 	}
 
 	public static void sortTest(String method, final Comparable[] randomNumbers) {
@@ -83,5 +83,13 @@ public abstract class SortBase {
 			}
 		}
 		return true;
+	}
+
+	public static void print(Comparable[] a) {
+		StringBuilder sb = new StringBuilder();
+		for(Comparable ele : a){
+			sb.append(ele.toString()).append(" ");
+		}
+		System.out.println(sb.toString());
 	}
 }
