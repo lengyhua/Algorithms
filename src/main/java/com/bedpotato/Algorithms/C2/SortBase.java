@@ -14,23 +14,19 @@ public abstract class SortBase {
 	public static final String QUICK_SORT = "quickSort";
 	public static final String HEAP_SORT = "heapSort";
 
-	// 排序算法
-	static String method = SHELL_SORT;
 	// 排序数组长度
-	static int length = 7;
+	private final static int length = 10;
+	// 是否打印排序时间
+	private final static boolean isPrintTime = false;
 
 	public static void main(String[] args) {
 		// 生成随机数
-		// Double[] randomNumbers = new Double[length];
-		// for (int i = 0; i < length; i++) {
-		// randomNumbers[i] = Math.random();
-		// }
 		Integer[] randomNumbers = new Integer[length];
 		for (int i = 0; i < length; i++) {
-			randomNumbers[i] = new Random().nextInt(100);
+			randomNumbers[i] = new Random().nextInt(length * 10);
 		}
-		// sortTest(INSERTION_SORT, randomNumbers);
-		// sortTest(SELECTION_SORT, randomNumbers);
+		sortTest(INSERTION_SORT, randomNumbers);
+		sortTest(SELECTION_SORT, randomNumbers);
 		sortTest(SHELL_SORT, randomNumbers);
 	}
 
@@ -45,7 +41,9 @@ public abstract class SortBase {
 			sort = new ShellSort();
 		}
 		sort.sort(Arrays.copyOf(randomNumbers, length));
-		System.out.println(timer.elapsedTime());
+		if(isPrintTime){
+			System.out.println(timer.elapsedTime());
+		}
 		// test practise
 		Comparable[] testData = Arrays.copyOf(randomNumbers, length);
 		sort.practise(testData);
@@ -87,7 +85,7 @@ public abstract class SortBase {
 
 	public static void print(Comparable[] a) {
 		StringBuilder sb = new StringBuilder();
-		for(Comparable ele : a){
+		for (Comparable ele : a) {
 			sb.append(ele.toString()).append(" ");
 		}
 		System.out.println(sb.toString());

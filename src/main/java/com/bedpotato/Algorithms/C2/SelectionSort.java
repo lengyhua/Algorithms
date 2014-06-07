@@ -6,26 +6,26 @@ public class SelectionSort extends SortBase {
 	@Override
 	public void sort(Comparable[] a) {
 		for (int i = 0; i < a.length; i++) {
-			int min = i;
+			int minIndex = i;
 			for (int j = i + 1; j < a.length; j++) {
-				if (less(a[j], a[min])) {
-					min = j;
+				if (less(a[j], a[minIndex])) {
+					minIndex = j;
 				}
 			}
-			exch(a, i, min);
+			exch(a, i, minIndex);
 		}
 	}
 
 	@Override
 	public void practise(Comparable[] a) {
 		for (int i = 0; i < a.length; i++) {
-			int min = i;
-			for (int j = i + 1; j < i; j++) {
-				if (less(a[j], a[min])) {
-					min = j;
+			int minIndex = i;
+			for (int j = i + 1; j < a.length; j++) {
+				if (less(a[j], a[minIndex])) {
+					minIndex = j;
 				}
 			}
-			exch(a, i, min);
+			exch(a, i, minIndex);
 		}
 	}
 }
