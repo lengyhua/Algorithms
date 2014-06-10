@@ -28,6 +28,7 @@ public abstract class SortBase {
 		sortTest(INSERTION_SORT, randomNumbers);
 		sortTest(SELECTION_SORT, randomNumbers);
 		sortTest(SHELL_SORT, randomNumbers);
+		sortTest(MERGE_SORT, randomNumbers);
 	}
 
 	public static void sortTest(String method, final Comparable[] randomNumbers) {
@@ -39,9 +40,11 @@ public abstract class SortBase {
 			sort = new SelectionSort();
 		} else if (method.equals(SHELL_SORT)) {
 			sort = new ShellSort();
+		} else if (method.equals(MERGE_SORT)) {
+			sort = new MergeSort();
 		}
 		sort.sort(Arrays.copyOf(randomNumbers, length));
-		if(isPrintTime){
+		if (isPrintTime) {
 			System.out.println(timer.elapsedTime());
 		}
 		// test practise
