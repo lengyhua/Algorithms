@@ -1,6 +1,5 @@
 package com.bedpotato.Algorithms.C2;
 
-
 @SuppressWarnings("rawtypes")
 public class MergeSort extends SortBase {
 	private static Comparable[] aux;// 归并所需的辅助数组
@@ -41,9 +40,40 @@ public class MergeSort extends SortBase {
 		}
 	}
 
+	private static Comparable[] temp;
+
 	@Override
 	public void practise(Comparable[] a) {
-		// TODO Auto-generated method stub
+		temp = new Comparable[a.length];
+		sortPractise(a, 0, a.length - 1);
+	}
 
+	private static void sortPractise(Comparable[] a, int lo, int hi) {
+		if (hi <= lo) {
+			return;
+		}
+		int mid = lo + (hi - lo) / 2;
+		sortPractise(a, lo, mid);
+		sortPractise(a, mid + 1, hi);
+		mergePractise(a, lo, mid, hi);
+	}
+
+	private static void mergePractise(Comparable[] a, int lo, int mid, int hi) {
+		for (int i = lo; i <= hi; i++) {
+			temp[i] = a[i];
+		}
+		int arr1Pointer = lo;
+		int arr2Pointer = mid + 1;
+		for (int i = lo; i <= hi; i++) {
+			if (arr1Pointer > mid) {
+				a[i] = temp[arr2Pointer];
+			} else if (arr2Pointer > hi) {
+				a[i] = temp[arr1Pointer];
+			} else if (less(temp[arr1Pointer], temp[arr2Pointer])) {
+				a[i] = temp[arr1Pointer];
+			} else {
+				a[i] = temp[arr2Pointer];
+			}
+		}
 	}
 }
