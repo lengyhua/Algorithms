@@ -1,4 +1,4 @@
-package com.bedpotato.Algorithms.C2;
+package com.bedpotato.Algorithms.C2.Sort;
 
 import java.util.Arrays;
 import java.util.Random;

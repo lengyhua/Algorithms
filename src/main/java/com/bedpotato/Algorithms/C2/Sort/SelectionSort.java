@@ -1,4 +1,4 @@
-package com.bedpotato.Algorithms.C2;
+package com.bedpotato.Algorithms.C2.Sort;
 
 @SuppressWarnings("rawtypes")
 public class SelectionSort extends SortBase {
