@@ -15,7 +15,7 @@ public abstract class SortBase {
 	public static final String HEAP_SORT = "heapSort";
 
 	// 排序数组长度
-	private final static int length = 10;
+	private final static int length = 1000;
 	// 是否打印排序时间
 	private final static boolean isPrintTime = false;
 
@@ -29,6 +29,7 @@ public abstract class SortBase {
 		sortTest(SELECTION_SORT, randomNumbers);
 		sortTest(SHELL_SORT, randomNumbers);
 		sortTest(MERGE_SORT, randomNumbers);
+		sortTest(QUICK_SORT, randomNumbers);
 	}
 
 	public static void sortTest(String method, final Comparable[] randomNumbers) {
@@ -42,6 +43,8 @@ public abstract class SortBase {
 			sort = new ShellSort();
 		} else if (method.equals(MERGE_SORT)) {
 			sort = new MergeSort();
+		} else if (method.equals(QUICK_SORT)) {
+			sort = new QuickSort();
 		}
 		sort.sort(Arrays.copyOf(randomNumbers, length));
 		if (isPrintTime) {
