@@ -32,6 +32,7 @@ import java.util.LinkedList;
 import java.util.TreeSet;
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import com.bedpotato.alg4.Point2D;
 
 /**
  *  <i>Standard draw</i>. This class provides a basic capability for
@@ -391,7 +392,11 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
         offscreen.draw(new Line2D.Double(scaleX(x0), scaleY(y0), scaleX(x1), scaleY(y1)));
         draw();
     }
-
+    
+    public static void line(Point2D p1, Point2D p2){
+    	line(p1.x(),p1.y(),p2.x(),p2.y());
+    }
+    
     /**
      * Draw one pixel at (x, y).
      * @param x the x-coordinate of the pixel
@@ -419,6 +424,10 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
         else offscreen.fill(new Ellipse2D.Double(xs - scaledPenRadius/2, ys - scaledPenRadius/2,
                                                  scaledPenRadius, scaledPenRadius));
         draw();
+    }
+    
+    public static void point(Point2D p){
+    	point(p.x(),p.y());
     }
 
     /**

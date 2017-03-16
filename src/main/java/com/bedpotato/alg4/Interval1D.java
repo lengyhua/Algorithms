@@ -66,6 +66,26 @@ public class Interval1D {
         }
         else throw new IllegalArgumentException("Illegal interval");
     }
+    
+    /**
+     * 该方法不必在意x，y的大小
+     * @param x
+     * @param y
+     * @return
+     */
+    public static Interval1D genInterval(double x, double y){
+    	
+    	if (Double.isInfinite(x) || Double.isInfinite(y))
+            throw new IllegalArgumentException("Endpoints must be finite");
+        if (Double.isNaN(x) || Double.isNaN(y))
+            throw new IllegalArgumentException("Endpoints cannot be NaN");
+    	
+        if(x<y)
+        	return new Interval1D(x,y);
+        else
+        	return new Interval1D(y,x);
+        
+    }
 
     /**
      * Returns the left endpoint.
