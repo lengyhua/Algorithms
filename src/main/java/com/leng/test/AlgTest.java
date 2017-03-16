@@ -8,6 +8,8 @@ import com.bedpotato.alg4.utils.StdRandom;
 
 public class AlgTest {
 	
-	public static void main(String[] args) {}
+	public static void main(String[] args) {
+		System.out.println("1111");
+	}
 	
 }
