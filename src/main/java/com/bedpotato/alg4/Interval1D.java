@@ -113,7 +113,22 @@ public class Interval1D {
         if (that.right < this.left) return false;
         return true;
     }
-
+    /**
+     * 获取两个Interval1D共有部分
+     * @param that
+     * @return
+     */
+    public Interval1D getIntersects(Interval1D that){
+    	
+    	if(this.intersects(that)){
+    		double[] ps = {this.left(),this.right(),that.left(),that.right()};
+    		Arrays.sort(ps);
+    		return new Interval1D(ps[1],ps[2]);
+    	}
+    	
+    	return null;
+    }
+    
     /**
      * Does this interval contain the value x?
      * @param x the value

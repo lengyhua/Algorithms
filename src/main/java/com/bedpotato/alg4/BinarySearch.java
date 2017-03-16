@@ -66,6 +66,28 @@ public class BinarySearch {
         }
         return -1;
     }
+    /**
+     * 通过传入一个Counter对象，计算查找的次数
+     * @param key
+     * @param a
+     * @param c
+     * @return
+     */
+    public static int rank(int key, int[] a, Counter c){
+    	
+    	int lo = 0;
+        int hi = a.length - 1;
+        while (lo <= hi) {
+            // Key is in a[lo..hi] or not present.
+            int mid = lo + (hi - lo) / 2;
+            c.increment();
+            if      (key < a[mid]) hi = mid - 1;
+            else if (key > a[mid]) lo = mid + 1;
+            else return mid;
+        }
+        return -1;
+    	
+    }
 
     /**
      * Reads in a sequence of integers from the whitelist file, specified as

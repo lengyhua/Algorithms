@@ -52,7 +52,20 @@ public class Interval2D {
         if (!this.y.intersects(that.y)) return false;
         return true;
     }
-
+    /**
+     * 获取两个Interval2D交叉部分区域
+     * @param that
+     * @return
+     */
+    public Interval2D getIntersects(Interval2D that){
+    	if(this.intersects(that)){
+    		Interval1D I1 = this.x.getIntersects(that.x);
+    		Interval1D I2 = this.y.getIntersects(that.y);
+    		return new Interval2D(I1,I2);
+    	}
+    	return null;
+    }
+    
     /**
      * Does this two-dimensional interval contain the point p?
      * @param p the two-dimensional point
@@ -61,7 +74,36 @@ public class Interval2D {
     public boolean contains(Point2D p) {
         return x.contains(p.x())  && y.contains(p.y());
     }
-
+    
+    /**
+     * 判断区域是否包含传入的所有的Point2D
+     * @param ps
+     * @return
+     */
+    public boolean contains(Point2D...ps){
+    	for(Point2D p : ps){
+    		if(!contains(p)){
+    			return false;
+    		}
+    	}
+    	return true;
+    }
+    
+    /**
+     * 判断this是否包含that 2D区域
+     * @param that
+     * @return
+     */
+    public boolean contains(Interval2D that){
+    	
+    	Point2D p1 = new Point2D(that.x.left(),that.y.left());
+    	Point2D p2 = new Point2D(that.x.right(),that.y.left());
+    	Point2D p3 = new Point2D(that.x.left(),that.y.right());
+    	Point2D p4 = new Point2D(that.x.right(),that.y.right());
+    	
+    	return contains(p1,p2,p3,p4);
+    }
+    
     /**
      * Returns the area of this two-dimensional interval.
      * @return the area of this two-dimensional interval
